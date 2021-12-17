@@ -1,0 +1,118 @@
+from tkinter import *
+#from tkinter.ttk import *
+win=Tk()
+win.title("GUI Calculator")
+win.configure(bg='purple')
+label=Label(win,text="All copyrights reserved...").pack()
+#size
+win.geometry('700x600')
+win
+#buttons
+btc= Button(win, text = 'Close',bd='5',command = win.destroy)
+#btn.place(x=50,y=100)
+btc.pack(side = 'bottom')
+
+
+equation=StringVar()
+expression=""
+#expression_field = Entry(ash, textvariable=equation)
+
+def all_clear():
+     global expression
+     expression=""
+     equation.set("")
+
+def btn_click(num):
+    global expression
+    expression = expression + str(num)
+    equation.set(expression)
+ 
+def calculate():
+ 
+    try:
+ 
+        global expression
+        total = str(eval(expression))
+        equation.set(total)
+        expression = ""
+
+    except:
+ 
+        equation.set(" error ")
+        expression = ""
+ 
+"""
+def delete():
+    global expression
+    expression.deleteCharAt(expression.length()-1)
+    equation.deleteCharAt(equation.length()-1)
+   
+def Ans():
+   
+"""
+
+entry1= Entry(win,font=('Century', 12),width=100,justify='right',textvariable=equation)
+entry1.pack(padx=100,pady= 20)
+
+   
+#buttons
+bt1= Button(win, text='1',bd='5',padx=20,pady=15,command=lambda:btn_click(1))
+bt1.place(x=150,y=150)
+
+bt4= Button(win, text='4',bd='7',padx=20,pady=15,command=lambda:btn_click(4))
+bt4.place(x=150,y=220)
+
+bt7= Button(win, text='7',bd='7',padx=20,pady=15,command=lambda:btn_click(7))
+bt7.place(x=150,y=290)
+
+bt2= Button(win, text='2',bd='7',padx=20,pady=15,command=lambda:btn_click(2))
+bt2.place(x=250,y=150)
+
+bt5= Button(win, text='5',bd='7',padx=20,pady=15,command=lambda:btn_click(5))
+bt5.place(x=250,y=220)
+
+bt8= Button(win, text='8',bd='7',padx=20,pady=15,command=lambda:btn_click(8))
+bt8.place(x=250,y=290)
+
+bt3= Button(win, text='3',bd='7',padx=20,pady=15,command=lambda:btn_click(3))
+bt3.place(x=350,y=150)
+
+bt6= Button(win, text='6',bd='7',padx=20,pady=15,command=lambda:btn_click(6))
+bt6.place(x=350,y=220)
+
+bt9= Button(win, text='9',bd='7',padx=20,pady=15,command=lambda:btn_click(9))
+bt9.place(x=350,y=290)
+
+bt0= Button(win, text='0',bd='7',padx=20,pady=15,command=lambda:btn_click(0))
+bt0.place(x=250,y=360)
+
+#symbols
+
+btadd= Button(win, text='+',bd='8',padx=18,pady=50,command=lambda:btn_click('+'))
+btadd.place(x=450,y=150)
+
+btsub= Button(win, text='-',bd='8',padx=20,pady=15,command=lambda:btn_click('-'))
+btsub.place(x=450,y=290)
+
+btmul= Button(win, text='*',bd='8',padx=20,pady=15,command=lambda:btn_click('*'))
+btmul.place(x=450,y=360)
+
+btdiv= Button(win, text='/',bd='8',padx=20,pady=15,command=lambda:btn_click('/'))
+btdiv.place(x=350,y=360)
+
+btdec= Button(win, text='.',bd='8',padx=20,pady=15,command=lambda:btn_click('.'))
+btdec.place(x=150,y=360)
+
+btmod= Button(win, text='Clear',bd='8',padx=20,pady=15,command=lambda:Ans())
+btmod.place(x=550,y=290)
+
+btclear= Button(win, text='DEL',bd='8',padx=20,pady=50,command=lambda:delete())
+btclear.place(x=550,y=150)
+
+btac= Button(win, text='AC',bd='8',padx=20,pady=15,command=lambda:all_clear())
+btac.place(x=550,y=360)
+
+btnxt= Button(win,text='Calculate',bd='8',padx=10,pady=5,command=lambda:calculate())
+btnxt.place(x=335,y=80)
+
+win.mainloop()
